@@ -1,29 +1,44 @@
 # IT 140 Module Four Assignment
-# Higher/Lower Game Pseudocode Template
-#
-# Complete the TODO prompts below with your own pseudocode.
-# Keep this file in .pseudo format for submission.
-#
-# Use clear indentation to show decisions and repeated behavior.
-# Your finished pseudocode should address every requirement in the
-# current Module Four Assignment Guidelines and Rubric.
+# Higher/Lower Game Pseudocode 
 
 START hilow_game
+    OUTPUT "Welcome to the higher/lower game!"
 
     # Establish a valid guessing range.
-    TODO: Obtain the lower and upper bounds.
-    TODO: Repeat as needed until the bounds satisfy the requirement.
+    Repeat
+        OUTPUT "Enter the lower bound:"
+        INPUT lower_bound
+        OUTPUT  "Enter the upper bound:"
+        INPUT upper_bound
 
-    # Establish the number the player is trying to guess.
-    TODO: Generate the required random number from the valid range.
+        IF lower_bound >=  upper_bound THEN
+            OUTPUT "The lower bound must be less than the upper bound."
+        END IF
+    UNTIL lower_bound < upper_bound
 
-    # Play the game.
-    TODO: Obtain and validate a guess using the selected bounds.
-    TODO: Repeat the required game behavior until the correct guess.
-        TODO: Compare a valid guess and provide the required feedback.
-        TODO: Obtain and validate another guess when play continues.
+# Establish the number the player is trying to guess.
+SET target_number to a random integer from lower_bound to upper_bound, inclusive
 
+# Play the game.
+REPEAT
+    REPEAT
+        OUTPUT "Guess a number between", lower_bound, "and", upper_bound
+        INPUT guess
+
+        IF guess < lower_bound OR guess > upper_bound THEN
+            OUTPUT "Your guess must be within the chosen range."
+        END IF
+    UNTIL guess >= lower_bound AND guess <= upper_bound
+
+    IF guess < target_number THEN
+        OUTPUT "Nope, too low"
+    ELSE IF guess > target_number THEN
+        OUTPUT "Nope, too high."
+    ELSE
+        OUTPUT "You got it!"
+    END IF
+  UNTIL guess = target_number
 END hilow_game
 
-# === References ===
-# TODO: Add references for sources you used, or delete this line if unused.
+
+
